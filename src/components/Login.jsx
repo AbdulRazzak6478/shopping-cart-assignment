@@ -1,13 +1,37 @@
 import React, { useState } from "react";
-import './login.css';
+import "./login.css";
+import axios from "axios";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  function onSubmit(e) {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    setEmail('');
-    setPassword('')
-  }
+    //     const obj = JSON.stringify({
+    //       username: "mor_2314",
+    //       password:  "83r5^_"
+    //   })
+    //     console.log('JSON obj : ',obj)
+    //     const usersName = JSON.stringify({ name: 'John Doe' });
+    //     const customConfig = {
+    //     headers: {
+    //     'Content-Type': 'application/json'
+    //     }
+    // };
+    //     const result = await axios.post('https://fakestoreapi.com/auth/login', obj, customConfig);
+    // const result = await axios.post('https://fakestoreapi.com/auth/login',obj)
+    // console.log('result : ',result)
+    //   fetch('https://fakestoreapi.com/auth/login',{
+    //     method:'POST',
+    //     body:JSON.stringify({
+    //         username: "mor_2314",
+    //         password: "83r5^_"
+    //     })
+    // })
+    //     .then(res=>res.json())
+    //     .then(json=>console.log(json))
+    setEmail("");
+    setPassword("");
+  };
   return (
     <>
       <div className="container">
@@ -17,24 +41,23 @@ const Login = () => {
             <div className="email">
               <label htmlFor="email">Email</label>
               <input
-                type="email"
-                name="email"
+                type="text"
+                name="text"
                 value={email}
-                placeholder="Enter your Email ..."
-                onChange={(e)=>setEmail(e.target.value)}
-                />
-              </div>
+                placeholder="Enter your UserName ..."
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
 
-              <div className="password">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  value={password}
-                  placeholder="Enter your password "
-                  onChange={(e)=>setPassword(e.target.value)}
-                  />
-              </div>
+            <div className="password">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
             <input type="submit" className="submit" onClick={onSubmit} />
           </form>
         </div>

@@ -46,3 +46,14 @@ form div{
     padding: 5px 10px;
     background-color: white;
 }
+.submit{
+    border:none;
+    padding: 5px 10px;
+    background-color:blueviolet;
+    color:white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.submit:hover{
+    background-color:rgba(138, 43, 226,0.6);
+}
