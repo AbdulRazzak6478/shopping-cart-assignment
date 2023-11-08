@@ -40,6 +40,7 @@ const Login = (props) => {
     //   username: userName,
     //   password: password,
     // }
+    // 83r5^_  = "83r5^_/"
     console.log("JSON obj : ", obj);
     const customConfig = {
       headers: {
@@ -56,16 +57,16 @@ const Login = (props) => {
         customConfig
       );
       console.log("result : ", result);
+      console.log('login successfully ')
+      onSubmitSuccess(result.data.token);
+      setUserName("");
+      setPassword("");
+      toast.success("Login Successfully !");
     } catch (error) {
       console.log('login error : ',error)
       alert('Entered UserName or Password is incorrect ,Please check')
       return
     }
-    console.log('login successfully ')
-    onSubmitSuccess(result.data.token);
-    setUserName("");
-    setPassword("");
-    toast.success("Login Successfully !");
   };
   return (
     <>

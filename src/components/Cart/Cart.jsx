@@ -7,6 +7,7 @@ import { addToCart, decrement, deleteFromCart, calculatePrice,increment} from '.
 const Cart = () => {
   const {cartItems,subTotal, tax, shipping, total }=useSelector((state)=>state.cart);
   console.log("carts items are :"+cartItems.length);
+  
   const dispatch=useDispatch();
   const incrementHandler = (id) => {
     dispatch(increment(id));
