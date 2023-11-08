@@ -11,6 +11,7 @@ import Blog from './components/Blog';
 import { Route, Routes,BrowserRouter as Router } from 'react-router-dom';
 import {Toaster} from 'react-hot-toast'
 const App = () => {
+
   return (
     <>
         <Router>

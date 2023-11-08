@@ -7,6 +7,7 @@ const initialState ={
     shipping:0,
     tax:0,
     total:0,
+    flag : false,
 }
 
 
@@ -44,6 +45,9 @@ export const accountSlice = createSlice(
             deleteFromCart: (state, action) => {
                 state.cartItems = state.cartItems.filter((i) => i.id !== action.payload);
             },
+            setLogout: (state, action) => {
+                state.flag = action.payload;
+            },
             calculatePrice: (state) => {
                 let sum = 0;
                 state.cartItems.forEach((i) => (sum += i.price * i.quantity));
@@ -56,7 +60,7 @@ export const accountSlice = createSlice(
     }
 )
 // Action creators are generated for each case reducer function
-export const {addToCart,increment, deleteFromCart, decrement , calculatePrice } = accountSlice.actions;
+export const {addToCart,increment, deleteFromCart, decrement , calculatePrice, setLogout } = accountSlice.actions;
 
 
 export default accountSlice.reducer;

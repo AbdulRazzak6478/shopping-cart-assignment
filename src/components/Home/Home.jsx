@@ -32,6 +32,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const carts = useSelector((state) => state.cart.cartItems);
   console.log("carts : ", carts);
+  
   function onAddHandler(options) {
     dispatch(addToCart(options));
     console.log("add to cart");

@@ -4,6 +4,8 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import {  Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { useDispatch} from 'react-redux'
+import { setLogout  } from "../store/reducers";
 
 const Login = (props) => {
   const [userName, setUserName] = useState("");
@@ -11,44 +13,55 @@ const Login = (props) => {
   const [isNav, setIsNav] = useState(false);
 
   console.log("props : ", props);
-
+  const dispatch = useDispatch();
   const onSubmitSuccess = (jwtToken) => {
     // Cookies.set('jwt_token', jwtToken, {
     //   expires: '1',
     // });
     Cookies.set('jwt_token', jwtToken, { expires: 1 });
     const name = Cookies.get('jwt_token');
+    dispatch(setLogout(true));
     console.log('token : ',name)
     setIsNav(true);
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    //     const token = Cookies.get('jwt_token')
-        // if (token !== undefined) {
-        //   return <Redirect to="/" />
-        // }
-
-    // Sai Kiran12:17
-    // import {Redirect} from 'react-router-dom'
-    // import Cookies from 'js-cookie'
-
+    if(userName.length ==0 || password.length==0)
+    {
+      alert('Enter the userName and Password correctly');
+      return;
+    }
     const obj = JSON.stringify({
-      username: "mor_2314",
-      password: "83r5^_",
+      username: userName,
+      password: password,
     });
+    // const obj = {
+    //   username: userName,
+    //   password: password,
+    // }
     console.log("JSON obj : ", obj);
     const customConfig = {
       headers: {
         "Content-Type": "application/json",
       },
     };
-    const result = await axios.post(
-      "https://fakestoreapi.com/auth/login",
-      obj,
-      customConfig
-    );
-    console.log("result : ", result);
+
+    // mor_2314
+    // 83r5^_"
+    try {
+      let result = await axios.post(
+        "https://fakestoreapi.com/auth/login",
+        obj,
+        customConfig
+      );
+      console.log("result : ", result);
+    } catch (error) {
+      console.log('login error : ',error)
+      alert('Entered UserName or Password is incorrect ,Please check')
+      return
+    }
+    console.log('login successfully ')
     onSubmitSuccess(result.data.token);
     setUserName("");
     setPassword("");
@@ -70,6 +83,7 @@ const Login = (props) => {
                   name="text"
                   value={userName}
                   placeholder="Enter your UserName ..."
+                  required
                   onChange={(e) => setUserName(e.target.value)}
                 />
               </div>
@@ -80,6 +94,7 @@ const Login = (props) => {
                   type="password"
                   name="password"
                   value={password}
+                  required
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
