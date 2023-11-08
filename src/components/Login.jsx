@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./login.css";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import {Navigate } from "react-router-dom";
+import {  Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Login = (props) => {
@@ -25,9 +25,9 @@ const Login = (props) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     //     const token = Cookies.get('jwt_token')
-    //     if (token !== undefined) {
-    //       return <Redirect to="/" />
-    //     }
+        // if (token !== undefined) {
+        //   return <Redirect to="/" />
+        // }
 
     // Sai Kiran12:17
     // import {Redirect} from 'react-router-dom'
