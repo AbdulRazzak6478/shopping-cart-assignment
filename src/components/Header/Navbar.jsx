@@ -45,35 +45,35 @@ const Navbar = () => {
           className="nav-list"
           style={{ display: showNavList ? "flex" : null }}
         >
-          <Link to={"/"}>
+          <Link to={"/"} onClick={toggleNavList}>
             <li className="nav-list-item">
               <a href="#" className="link nav-link">
                 Home
               </a>
             </li>
           </Link>
-          <Link to={"/about"}>
+          <Link to={"/about"} onClick={toggleNavList}>
             <li className="nav-list-item">
               <a href="#" className="link nav-link">
                 About
               </a>
             </li>
           </Link>
-          <Link to={"/contact"}>
+          <Link to={"/contact"} onClick={toggleNavList}>
             <li className="nav-list-item">
               <a href="#" className="link nav-link">
                 Contact
               </a>
             </li>
           </Link>
-          <Link to={"/blog"}>
+          <Link to={"/blog"} onClick={toggleNavList}>
             <li className="nav-list-item">
               <a href="#" className="link nav-link">
                 Blog
               </a>
             </li>
           </Link>
-          <Link to={"/cart"}>
+          <Link to={"/cart"} onClick={toggleNavList}>
             <li className="nav-list-item cart">
               <button className="shopping-cart-icon">
                 <FaShoppingCart />
@@ -81,7 +81,7 @@ const Navbar = () => {
               <span>{cartItems.length}</span>
             </li>
           </Link>
-          <Link to={"/signup"}>
+          <Link to={"/signup"} onClick={toggleNavList}>
             <li className="nav-list-item">
               {flag ? (
                 <button
@@ -103,7 +103,7 @@ const Navbar = () => {
               )}
             </li>
           </Link>
-          <Link to={"/login"}>
+          <Link to={"/login"} onClick={toggleNavList}>
             <li className="nav-list-item">
               <button
                 className="btn"
